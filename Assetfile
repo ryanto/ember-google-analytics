@@ -1,0 +1,47 @@
+mode = ENV['RAKEP_MODE'] || 'development'
+
+output "compiled"
+
+input "lib" do
+
+  match "**/*.js" do
+    filter(
+      Rake::Pipeline::OrderingConcatFilter,
+      [
+        "tracking_mixin.js"
+      ],
+      "ember-google-analytics.js"
+    )
+  end
+end
+
+
+input "vendor/js" do
+  match "*.js" do
+    filter(
+      Rake::Pipeline::OrderingConcatFilter,
+      [
+        "jquery.js",
+        "handlebars.js",
+        "ember.js",
+      ],
+      "vendor.js"
+    )
+  end
+end
+
+input "vendor/css" do
+  match "*.css" do
+    filter Rake::Pipeline::OrderingConcatFilter, [], "vendor.css"
+  end
+end
+
+input "tests" do
+  match "index.html" do
+    copy
+  end
+
+  match "**/*_test.js" do
+    filter Rake::Pipeline::OrderingConcatFilter, [], "tests.js"
+  end
+end
