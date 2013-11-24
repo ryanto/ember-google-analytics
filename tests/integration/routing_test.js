@@ -29,6 +29,18 @@ test("should not do anything when there is no google analytics", function() {
   });
 });
 
+test("should not do anything if window.ga is not a function", function() {
+  window.ga = 1;
+
+  visit("/");
+
+  visit("/welcome");
+
+  andThen(function() {
+    ok(window.ga);
+  });
+});
+
 test("should trigger when a route changes", function() {
   var counter = 0;
 

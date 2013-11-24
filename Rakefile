@@ -1,7 +1,7 @@
 namespace :plugin do
   task :build do
     sh "bundle exec rakep build"
-    sh "cp ./compiled/flash-message.js ./flash-message.js"
+    sh "cp ./compiled/ember-google-analytics.js ./ember-google-analytics.js"
   end
 
   task :clean do
