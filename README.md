@@ -32,7 +32,11 @@ App.VideoController = Ember.Controller.extend(
   actions: {
     play: function() {
       // ...
+      //this.trackEvent('category', 'action')
       this.trackEvent('video', 'play');
+      // or
+      //this.trackEvent('category', 'action', 'label', value)
+      this.trackEvent('video', 'play', 'youtube', 'http://youtube.com/......'');
     }
   }
 });
