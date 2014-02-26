@@ -14,9 +14,9 @@ Ember.GoogleAnalyticsTrackingMixin = Ember.Mixin.create({
     }
   },
 
-  trackEvent: function(category, action) {
+  trackEvent: function(category, action, label, value) {
     if (this.pageHasGa()) {
-      ga('send', 'event', category, action);
+      ga('send', 'event', category, action, label, value);
     }
   }
 });
