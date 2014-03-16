@@ -4,7 +4,7 @@ Ember.GoogleAnalyticsTrackingMixin = Ember.Mixin.create({
   },
 
   getTrackerPrefix: function () {
-    var tracker = (ga.getAll() || []).pop();
+    var tracker = (ga.getAll && typeof ga.getAll === "function" && ga.getAll() || []).pop();
     return tracker ? tracker.get('name') + '.' : '';
   },
 
