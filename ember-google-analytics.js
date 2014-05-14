@@ -3,6 +3,14 @@ Ember.GoogleAnalyticsTrackingMixin = Ember.Mixin.create({
     return window.ga && typeof window.ga === "function";
   },
 
+  logTrackingEnabled: function() {
+    return !!window.ENV && !!window.ENV.LOG_EVENT_TRACKING;
+  },
+
+  logTracking: function() {
+    Ember.Logger.info('Tracking Google Analytics event: ', arguments);
+  },
+
   trackPageView: function(page) {
     if (this.pageHasGa()) {
       if (!page) {
@@ -12,11 +20,19 @@ Ember.GoogleAnalyticsTrackingMixin = Ember.Mixin.create({
 
       ga('send', 'pageview', page);
     }
+
+    if (this.logTrackingEnabled()) {
+      this.logTracking('pageview', page);
+    }
   },
 
   trackEvent: function(category, action, label, value) {
     if (this.pageHasGa()) {
       ga('send', 'event', category, action, label, value);
+    }
+
+    if (this.logTrackingEnabled()) {
+      this.logTracking('event', category, action, label, value);
     }
   }
 });
