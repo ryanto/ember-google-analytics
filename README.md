@@ -44,6 +44,15 @@ App.VideoController = Ember.Controller.extend(
 
 The mixin can be applied to any Ember object.
 
+## Logging
+
+To enable console logging any events or page views sent to Google Analytics:
+
+```
+window.ENV = window.ENV || {};
+window.ENV.LOG_EVENT_TRACKING = true;
+```
+
 ## Development
 
 This plugin is built with rake pipeline, which requires Ruby. To get
