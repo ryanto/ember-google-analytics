@@ -36,13 +36,22 @@ App.VideoController = Ember.Controller.extend(
       this.trackEvent('video', 'play');
       // or
       //this.trackEvent('category', 'action', 'label', value)
-      this.trackEvent('video', 'play', 'youtube', 'http://youtube.com/......'');
+      this.trackEvent('video', 'play', 'youtube', 1);
     }
   }
 });
 ```
 
 The mixin can be applied to any Ember object.
+
+### Categories, Actions, and Labels
+
+There are four parts to an Event. Each individual Event you want to track must be tagged with at least two of these parts; the other two are optional but recommended.
+
+- **Category (required)**: The category is at the top of the hierarchy. It’s a way to bundle user activity together. "Slideshow", "Videos", and "Downloads" are good examples of categories, though you can be as specific or broad as your content requires.
+- **Action (required)**: The action is literally what the user does. For a video player example, potential actions might be: play, pause, share, get embed link, etc.
+- **Label (optional)**: Provides a bit more information about the user's action. For example, if you are using events to track a video player you might record the movie name as the label when an action occurs. That provides more context to what the user is doing.
+- **Value (optional)**: Any ``positive integer value``. It’s a number. You can use it to count things, like dollars or seconds. If you choose to use your event as a goal, then you can specify that Google Analytics use the event value as the goal value.
 
 ## Logging
 
