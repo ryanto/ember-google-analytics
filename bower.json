@@ -1,0 +1,26 @@
+{
+  "name": "ember-google-analytics",
+  "main": "ember-google-analytics.js",
+  "version": "0.1.0",
+  "homepage": "https://github.com/ryanto/ember-google-analytics",
+  "authors": [
+    "Ryan T"
+  ],
+  "description": "Ember.JS Plugin that makes Google Analytics just work.",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "ember",
+    "google",
+    "analytics"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
