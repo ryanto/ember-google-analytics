@@ -42,7 +42,7 @@ Ember.Application.initializer({
   initialize: function(container, application) {
     var router = container.lookup('router:main');
     router.on('didTransition', function() {
-      this.trackPageView(this.get('url'));
+      this.trackPageView(router.rootURL.slice(0, -1) + this.get('url'));
     });
   }
 });
