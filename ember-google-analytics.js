@@ -39,14 +39,14 @@ Ember.GoogleAnalyticsTrackingMixin = Ember.Mixin.create({
 Ember.Application.initializer({
   name: "googleAnalytics",
 
-  initialize: function(registry, application) {
+  initialize: function(application) {
   }
 });
 Ember.Application.instanceInitializer({
   name: "googleAnalytics",
 
-  initialize: function(instance) {
-    var router = instance.container.lookup('router:main');
+  initialize: function(appInstance) {
+    var router = appInstance.lookup('router:main');
     router.on('didTransition', function() {
       this.trackPageView(router.rootURL.slice(0, -1) + this.get('url'));
     });
